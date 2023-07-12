@@ -1,0 +1,58 @@
+@use '/src/styles/_theme' as t;
+
+$icon-size:1.4rem;
+$h-size:$icon-size;
+$p-size:1.2rem;
+$gap:0.3rem;
+
+.txt-h-icon{
+    display: flex;
+    align-items: center;
+    gap:$gap;
+    >*{
+        font-size: $icon-size;
+        color:t.$card-icon;
+    }
+    >p{
+        outline:none;
+        font-size:$h-size;
+        font-weight:500;
+        color:t.$task-card-text;
+    }
+}
+
+.txt-p-icon{
+    display: flex;
+    align-items: center;
+    gap:0.3rem;
+    >*{
+        font-size: $icon-size;
+    }
+    >p{
+        outline:none;
+        font-size:$p-size;
+    }
+}
+
+.txt-h{
+    display: flex;
+    align-items: center;
+    gap:0.3rem;
+    >p{
+        outline:none;
+        margin-left: $icon-size + $gap;
+        font-size:$h-size;
+        font-weight:500;
+    }
+}
+
+.txt-p{
+    display: flex;
+    align-items: center;
+    gap:0.3rem;
+    >p{
+        outline:none;
+        margin-left: $icon-size + $gap;
+        font-size:$p-size;
+    }
+}

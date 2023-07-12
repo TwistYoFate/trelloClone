@@ -1,0 +1,66 @@
+@use '/src/styles/_theme' as t;
+
+.task-modal{
+    display: flex;
+    position:fixed;
+        top:50%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        height:60%;
+        width:60%;
+        max-height:500px;
+        max-width:600px;
+        min-height:300px;
+        min-width: 400px;
+        background-color: t.$task-card-bg ;
+        border-radius: var(--border-radius);
+        padding:0.5rem 0.8rem;
+    .task-modal-left{
+        
+        width:60%;
+        >textarea{
+            display: block;
+            background:t.$stage-bg;
+            min-height:5rem;
+            resize: none;
+            min-width:200px;
+            font-size: 0.8rem;
+            box-shadow: none;
+            border:none;
+        }
+    }
+
+    .task-modal-right{
+        width:40%;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: space-between;
+        padding:0.5rem 0;
+        &:first-child{
+            float: right;
+            font-size: 1.4rem;
+        }
+        >.btns{
+            display: flex;
+            gap:1rem;
+            >.del-btn{
+                background:red;
+            }
+            >button{
+                border-radius: calc(var(--border-radius)*0.8);
+                background:t.$board-bg;
+                color:t.$board-head-text;
+                border:none;
+                cursor: pointer;
+                padding:0.4rem 0.6rem;
+                
+                &:active{
+                    background:t.$stage-bg;
+                    color:t.$stage-text;
+                }
+            }
+        }
+       
+    }
+}

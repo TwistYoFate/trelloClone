@@ -1,0 +1,12 @@
+@use '../../../styles/_theme' as theme;
+
+.task-card{
+    width:100%;
+    min-height:1rem;
+    background:theme.$task-card-bg;
+    color:theme.$task-card-text;
+    border-radius: var(--border-radius);
+    padding:0.5rem 0.8rem;
+    margin: 0.5rem 0;
+    box-shadow: theme.$ds-shadow-raised;
+}

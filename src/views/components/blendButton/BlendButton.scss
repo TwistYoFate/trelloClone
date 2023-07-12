@@ -1,0 +1,18 @@
+@use "/src/styles/_theme" as t;
+
+.blend-btn{
+    min-height:2rem;
+    display: flex;
+    width: 80%;
+    justify-content: start;
+    align-items: center;
+    border-radius: var(--border-radius);
+    padding:0.4rem 0.8rem;
+    cursor:pointer;
+    visibility:visible;
+    opacity:1;
+}
+
+.blend-btn:hover{
+    background-color:t.$ds-button-hovered
+}

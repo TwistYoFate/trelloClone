@@ -1,0 +1,31 @@
+@use "../../../styles/_theme" as theme;
+
+.stage{
+    min-width:20%;
+    // min-height:40svh;
+    background:theme.$stage-bg;
+    color:theme.$stage-text;
+    border-radius: var(--border-radius);
+    box-shadow: theme.$ds-shadow-raised;
+    padding:0.5rem 0.8rem;
+
+    >header{
+        padding: 0 0.8rem;
+        display: flex;
+        justify-content:space-between;
+        // padding: 1rem;
+    }
+    .three-dots{
+        font-size: 1.6rem;
+    }
+
+    >.container{
+        display: flex;
+        min-width:20%;
+        height:100%;
+        flex-direction: column;
+        align-items: center;
+        // padding: 1rem;
+        // gap:1rem;
+    }
+}
