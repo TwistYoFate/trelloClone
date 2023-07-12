@@ -56,11 +56,11 @@ const data: IBoardResponse = {
         stageId: "s3",
         title: "In Progress",
         boardId: "b1",
-        index: 2,
+        index: 3,
         taskList:[ {
             taskId: 't6',
             title: 'bug',
-            stageId: 's2',
+            stageId: 's3',
             description: 'error in uat'
         }]
     },
@@ -68,11 +68,11 @@ const data: IBoardResponse = {
         stageId: "s4",
         title: "Done",
         boardId: "b1",
-        index: 2,
+        index: 4,
         taskList:[ {
             taskId: 't7',
             title: 'feature 2',
-            stageId: 's2',
+            stageId: 's4',
             description: 'money transaction'
         }]
     }]
