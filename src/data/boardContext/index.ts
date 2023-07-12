@@ -1,5 +1,5 @@
 import { IStageResponseObject } from "../../domain";
-import { createTask, deleteTask, moveTaskAcrossStages, moveTaskWithinStage, updateTask } from "./actionHandlers";
+import { createTask, deleteTask, loadData, moveTaskAcrossStages, moveTaskWithinStage, updateTask } from "./actionHandlers";
 
 
 /**
@@ -33,14 +33,7 @@ const reducer = (state: IBoardContext, action: IAction): IBoardContext => {
     switch (action.type) {
 
         case ACTIONS.LOAD_BOARD:
-            let stageMap = {};
-            action.payload.stageList.map(stage=>{
-                stageMap[stage.stageId] = stage;
-            })
-            return {
-                ...action.payload,
-                stageMap
-            }
+            return loadData(action);
         case ACTIONS.LOAD_CACHED_BOARD:
             return {...action.payload}
         case ACTIONS.CREATE_TASK:

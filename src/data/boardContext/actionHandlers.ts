@@ -1,23 +1,35 @@
 import { IBoardContext } from ".";
 import { ITask } from "../../domain";
 
+// This is used to initially fetch and load data
+export function loadData(action: IAction): IBoardContext {
+    let stageMap = {};
+    action.payload.stageList.map(stage => {
+        stageMap[stage.stageId] = stage;
+    })
+    return {
+        ...action.payload,
+        stageMap
+    }
+}
+
 
 /**
  * If a task is dragged and dropped within it's original stage, this action handler will be triggered
  */
-export function moveTaskWithinStage(store:IBoardContext,stageId:string,fromIndex:number,toIndex:number):IBoardContext{
-    if(fromIndex===toIndex)return store;
+export function moveTaskWithinStage(store: IBoardContext, stageId: string, fromIndex: number, toIndex: number): IBoardContext {
+    if (fromIndex === toIndex) return store;
     const newTasklist = Array.from(store.stageMap[stageId].taskList);
     const task = newTasklist[fromIndex];
-    newTasklist.splice(fromIndex,1);
-    newTasklist.splice(toIndex,0,task);
-    return{
+    newTasklist.splice(fromIndex, 1);
+    newTasklist.splice(toIndex, 0, task);
+    return {
         ...store,
-        stageMap:{
+        stageMap: {
             ...store.stageMap,
-            [stageId]:{
+            [stageId]: {
                 ...store.stageMap[stageId],
-                taskList:newTasklist
+                taskList: newTasklist
             }
         }
     }
@@ -26,26 +38,26 @@ export function moveTaskWithinStage(store:IBoardContext,stageId:string,fromIndex
 /**
  * If a task is dragged and dropped from one stage to another, this action handler will be triggered
  */
-export function moveTaskAcrossStages(store:IBoardContext,sourceStageId:string,destinationStageId:string,fromIndex:number,toIndex:number):IBoardContext{
+export function moveTaskAcrossStages(store: IBoardContext, sourceStageId: string, destinationStageId: string, fromIndex: number, toIndex: number): IBoardContext {
     const newSourceTasklist = Array.from(store.stageMap[sourceStageId].taskList);
     const newDestinationTasklist = Array.from(store.stageMap[destinationStageId].taskList);
 
     const task = newSourceTasklist[fromIndex];
     task.stageId = destinationStageId;
-    newSourceTasklist.splice(fromIndex,1);
-    newDestinationTasklist.splice(toIndex,0,task)
+    newSourceTasklist.splice(fromIndex, 1);
+    newDestinationTasklist.splice(toIndex, 0, task)
 
-    return{
+    return {
         ...store,
-        stageMap:{
+        stageMap: {
             ...store.stageMap,
-            [sourceStageId]:{
+            [sourceStageId]: {
                 ...store.stageMap[sourceStageId],
-                taskList:newSourceTasklist
+                taskList: newSourceTasklist
             },
-            [destinationStageId]:{
+            [destinationStageId]: {
                 ...store.stageMap[destinationStageId],
-                taskList:newDestinationTasklist
+                taskList: newDestinationTasklist
             }
         }
     }
@@ -54,15 +66,15 @@ export function moveTaskAcrossStages(store:IBoardContext,sourceStageId:string,de
 /**
  * If a new task is to be created, this action handler will be triggered
  */
-export function createTask(store:IBoardContext,task:ITask):IBoardContext{
-    const {stageId} = task;
+export function createTask(store: IBoardContext, task: ITask): IBoardContext {
+    const { stageId } = task;
     const newStore = {
         ...store,
-        stageMap:{
+        stageMap: {
             ...store.stageMap,
-            [stageId]:{
+            [stageId]: {
                 ...store.stageMap[stageId],
-                taskList:[...store.stageMap[stageId].taskList,task]
+                taskList: [...store.stageMap[stageId].taskList, task]
             }
         }
     }
@@ -72,16 +84,16 @@ export function createTask(store:IBoardContext,task:ITask):IBoardContext{
 /**
  * If a task is to be updated, this action handler will be triggered
  */
-export function updateTask(store:IBoardContext,task:ITask):IBoardContext{
-    const {stageId} = task;
+export function updateTask(store: IBoardContext, task: ITask): IBoardContext {
+    const { stageId } = task;
     const newStore = {
         ...store,
-        stageMap:{
+        stageMap: {
             ...store.stageMap,
-            [stageId]:{
+            [stageId]: {
                 ...store.stageMap[stageId],
-                taskList:store.stageMap[stageId].taskList.map((currTask:ITask)=>{
-                    if(currTask.taskId === task.taskId){
+                taskList: store.stageMap[stageId].taskList.map((currTask: ITask) => {
+                    if (currTask.taskId === task.taskId) {
                         return task;
                     }
                     return currTask;
@@ -89,24 +101,24 @@ export function updateTask(store:IBoardContext,task:ITask):IBoardContext{
             }
         }
     }
-    return newStore; 
+    return newStore;
 }
 
 /**
  * If a task is to be deleted, this action handler will be triggered
  */
-export function deleteTask(store:IBoardContext,taskId:string,stageId:string):IBoardContext{
+export function deleteTask(store: IBoardContext, taskId: string, stageId: string): IBoardContext {
     const newStore = {
         ...store,
-        stageMap:{
+        stageMap: {
             ...store.stageMap,
-            [stageId]:{
+            [stageId]: {
                 ...store.stageMap[stageId],
-                taskList:store.stageMap[stageId].taskList.filter(currTask=>currTask.taskId!==taskId)
+                taskList: store.stageMap[stageId].taskList.filter(currTask => currTask.taskId !== taskId)
             }
         }
     }
-    return newStore; 
+    return newStore;
 }
 
 
