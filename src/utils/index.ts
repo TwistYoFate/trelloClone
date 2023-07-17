@@ -11,6 +11,9 @@ export function debounce(fn:Function,d:number):Function{
     }
 }
 
+/**
+ * Function to store data in the session storage for persistance
+ */
 export function cacheBoardData(data:IBoardContext){
     const stringifiedData = JSON.stringify(data);
     sessionStorage.setItem("boardData",stringifiedData);

@@ -74,7 +74,7 @@ function BoardView(props: IBoardViewProps) {
   hideAddBtns(false);
 
   return (
-    <DragDropContext onDragEnd={props.moveTask} onDragStart={()=>hideAddBtns(true)}>
+    <DragDropContext onDragEnd={(result)=>{props.moveTask(result);hideAddBtns(false)}} onDragStart={()=>hideAddBtns(true)}>
       <div className='board'>
         <header>
           <h2>{props.title}</h2>

@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import './TaskModal.scss';
 import TextWithIcon from '../textWithIcon/TextWithIcon';
-import { IStage, ITask } from '../../../domain';
 import { MdAnalytics, MdNotes, MdClear } from 'react-icons/md';
 
 /**
@@ -42,10 +41,6 @@ function TaskModal(props: ITaskModalProps) {
                 return;
         }
     }, [])
-
-    useEffect(() => {
-        console.log(task);
-    }, [task])
 
     const updateTitle = (text: string) => {
         setTask({

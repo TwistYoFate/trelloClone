@@ -3,7 +3,6 @@ import boardContext, { IBoardContext } from '../data/boardContext'
 import fakeData from '../data/fakedata'
 import { DropResult } from 'react-beautiful-dnd'
 import { ITaskModalMode } from '../views/components/taskModal/TaskModal'
-import { ITask } from '../domain'
 import uniqid from 'uniqid';
 import { cacheBoardData, debounce } from '../utils'
 
@@ -116,7 +115,6 @@ function useBoardVM() {
 
   // Filters the tasklists of all stages based on the titles matching the searchText 
   const filterState = ():IBoardContext=>{
-    console.log('triggered');
         if(!searchText.length) return state;
         const filteredBoard = JSON.parse(JSON.stringify(state));
         for(let stageId in state.stageMap){

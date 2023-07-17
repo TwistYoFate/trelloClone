@@ -1,5 +1,4 @@
 import { IBoardContext } from ".";
-import { ITask } from "../../domain";
 
 // This is used to initially fetch and load data
 export function loadData(action: IAction): IBoardContext {

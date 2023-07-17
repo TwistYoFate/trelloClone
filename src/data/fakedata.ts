@@ -1,5 +1,3 @@
-import { IStageResponseObject } from "../domain";
-
 export interface IBoardResponse{
     boardId:String,
     title:String,

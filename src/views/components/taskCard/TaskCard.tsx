@@ -1,4 +1,3 @@
-import { IStage, ITask } from '../../../domain'
 import './TaskCard.scss'
 import { Draggable, DraggableProvided } from 'react-beautiful-dnd';
 import { ITaskModalMode } from '../taskModal/TaskModal';

@@ -1,4 +1,3 @@
-import { IStage, ITask } from '../../../domain'
 import './Stage.scss'
 import TaskCard from '../taskCard/TaskCard'
 import { Droppable, DroppableProvided } from 'react-beautiful-dnd'
@@ -36,7 +35,7 @@ function Stage(props: IStageProps) {
                             <h3>
                                 {props.stage.title}
                             </h3>
-                            <MdOutlineMoreHoriz class="three-dots" />
+                            <MdOutlineMoreHoriz className="three-dots" />
                         </header>
                         <div className="container" id={props.stage.stageId} >
                             {
